@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>View user</title>
+</head>
+<body th:object="${user}">
+<h3>User:</h3>
+<p th:text="${'        Id:' + user.getId()}">id</p>
+<p th:text="${'First Name:' + user.getFirstName()}">firstName</p>
+<p th:text="${' Last Name:' + user.getLastName()}">lastName</p>
+<p th:text="${'     Email:' + user.getEmail()}">email</p>
+Все users <a href="/user-service/users">>>></a>
+</body>
+</html>

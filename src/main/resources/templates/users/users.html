@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>All users</title>
+</head>
+<body>
+<h4>Users</h4>
+<table>
+    <thead>
+    <tr>
+        <th>firstName</th>
+        <th>lastName</th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.getFirstName()}">first name</td>
+        <td th:text="${user.getLastName()}">last name</td>
+        <td>
+            <form method="get" action="/user-service/update">
+                <input type="hidden" id="id" name="id" th:value="${user.getId()}">
+                <input type="submit" value="Update">
+            </form>
+        </td>
+        <td>
+            <form th:method="DELETE" th:action="${'/user-service/users/' + user.getId()}">
+                <input type="submit" value="Delete">
+            </form>
+        </td>
+        <td>
+            <form th:method="GET" th:action="${'/user-service/users/' + user.getId()}">
+                <input type="submit" value="View">
+            </form>
+        </td>
+    </tr>
+</table>
+<h5>Добавить нового User <a href="/user-service/new">>>></a></h5>
+</body>
+</html>
