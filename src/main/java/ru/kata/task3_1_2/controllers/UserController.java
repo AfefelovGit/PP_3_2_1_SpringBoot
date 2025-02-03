@@ -1,7 +1,6 @@
 package ru.kata.task3_1_2.controllers;
 
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -9,30 +8,29 @@ import org.springframework.web.bind.annotation.*;
 import ru.kata.task3_1_2.model.User;
 import ru.kata.task3_1_2.service.UserService;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/user-service")
 public class UserController {
 
     private final UserService userService;
 
-    @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
     }
 
     @GetMapping("/users")
     public String getUsers(Model model) {
-        Iterablegit<User> users = userService.getAllUsers();
 
-        model.addAttribute("users", users);
+        model.addAttribute("users", userService.getAllUsers());
         return "/users/users";
     }
 
     @GetMapping("/users/{id}")
     public String getUser(@PathVariable Long id, Model model) {
-        User user = userService.getUserById(id);
 
-        model.addAttribute("user", user);
+        model.addAttribute("user", userService.getUserById(id));
         return "/users/view-user";
     }
 
@@ -56,9 +54,8 @@ public class UserController {
 
     @GetMapping(value = "/update")
     public String editOldUser(@RequestParam(name = "id", required = false) Long id, Model model) {
-        User user = userService.getUserById(id);
 
-        model.addAttribute("user", user);
+        model.addAttribute("user", userService.getUserById(id));
         return "/users/update-user";
     }
 
