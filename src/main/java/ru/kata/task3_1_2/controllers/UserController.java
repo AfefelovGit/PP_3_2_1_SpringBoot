@@ -22,7 +22,7 @@ public class UserController {
 
     @GetMapping("/users")
     public String getUsers(Model model) {
-        Iterable<User> users = userService.getAllUsers();
+        Iterablegit<User> users = userService.getAllUsers();
 
         model.addAttribute("users", users);
         return "/users/users";
