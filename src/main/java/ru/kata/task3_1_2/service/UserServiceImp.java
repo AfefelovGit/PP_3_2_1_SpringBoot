@@ -6,6 +6,8 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.kata.task3_1_2.dao.UserRepository;
 import ru.kata.task3_1_2.model.User;
 
+import java.util.List;
+
 @Service
 public class UserServiceImp implements UserService {
 
@@ -23,8 +25,8 @@ public class UserServiceImp implements UserService {
 
     @Transactional(readOnly = true)
     @Override
-    public Iterable<User> getAllUsers() {
-        return userRepository.findAll();
+    public List<User> getAllUsers() {
+        return (List<User>) userRepository.findAll();
     }
 
     @Transactional

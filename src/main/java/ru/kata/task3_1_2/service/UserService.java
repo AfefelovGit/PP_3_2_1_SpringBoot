@@ -2,6 +2,8 @@ package ru.kata.task3_1_2.service;
 
 import ru.kata.task3_1_2.model.User;
 
+import java.util.List;
+
 public interface UserService {
 
     void addUser(User user);
@@ -12,5 +14,5 @@ public interface UserService {
 
     User getUserById(Long id);
 
-    Iterable<User> getAllUsers();
+    List<User> getAllUsers();
 }
